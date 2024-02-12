@@ -1,3 +1,3 @@
-#User management backend
+# User management backend
 
-git
+A simple node.js backend to register new users and manage their orders
