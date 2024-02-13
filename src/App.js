@@ -20,7 +20,6 @@ db.once('open', function() {
   console.log("Connected to MongoDB");
 });
 
-
 // Routes
 app.get('/test', (req,res) => {
   console.log("tested");
@@ -28,6 +27,7 @@ app.get('/test', (req,res) => {
     message: "hello world"
   })
 });
+
 app.post('/add-user', (req, res) => addUser(req, res));
 app.post('/login-user', (req, res) => login(req, res));
 
