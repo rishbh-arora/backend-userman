@@ -1,4 +1,5 @@
-const User = require("../models/models")
+const { User } = require("../models/model")
+const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 
 exports.login = async (req, res) => {
@@ -8,8 +9,11 @@ exports.login = async (req, res) => {
     }
     try {
       if (await bcrypt.compare(req.body.password, user.password)) {
-        const accessToken = jwt.sign({ user: user }, process.env.ACCESS_TOKEN_SECRET);
-        res.json({ accessToken: accessToken });
+        const accessToken = jwt.sign({ user: user._id }, process.env.ACCESS_TOKEN_SECRET);
+        res.json({
+            accessToken: accessToken,
+            userID: user.id
+        });
       } else {
         res.status(401).send('Invalid password');
       }
