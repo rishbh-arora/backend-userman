@@ -10,7 +10,7 @@ const { addOrder } = require('./controllers/addOrder');
 
 const app = express();
 app.use(express.json());
-app.use(cors({origin: "https://frontend-userman.vercel.app"}));
+app.use(cors());
 
 // Connect to MongoDB
 mongoose.connect(process.env.DATABASE_URL);
